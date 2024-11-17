@@ -38,9 +38,8 @@ function Auth({register}) {
     },
   }
   return (
-    <div className={`${mode=='dark' && 'dark'}`}>
-      <div className='h-[100vh] flex items-center justify-center md:px-32 md:py-20 bg-neutral-50 dark:bg-neutral-700 mb-5'>
-        <div className='bg-neutral-100 dark:bg-neutral-800 md:grid grid-cols-[repeat(1,1fr_1fr)] h-full rounded-sm w-full md:mx-32 shadow-lg gap-12'>
+      <div className='h-[100vh] flex items-center justify-center md:px-32 md:pb-20 pt-40  bg-neutral-50 dark:bg-neutral-800 mb-5'>
+        <div className='bg-neutral-100 dark:bg-neutral-900 md:grid grid-cols-[repeat(1,1fr_1fr)] h-full rounded-sm w-full md:mx-32 shadow-lg gap-12'>
           <div className='bg-[url(https://img.freepik.com/free-vector/gold-gradient-abstract-design-background-wave_343694-3926.jpg?t=st=1731464633~exp=1731468233~hmac=9fe13cb3553b7df65aa5537381f510a8170e3c973e03542cf96293116d8b1ad9&w=1060)] bg-cover md:bg-left '>
             <div className='bg-transparent dark:bg-[#00000021] w-full h-full md:flex flex-col justify-center px-5 py-10 md:p-6 relative hidden'>
               <button onClick={handleClose} className='absolute top-6 text-xl cursor-pointer'><FontAwesomeIcon icon={faX} /></button>
@@ -86,7 +85,6 @@ function Auth({register}) {
           </div>
         </div>
       </div>
-    </div>
   )
 }
 
