@@ -9,6 +9,7 @@ import { useContext } from 'react'
 import Product from './pages/Product'
 import Favorite from './pages/Favorite'
 import Mybids from './pages/Mybids'
+import Profile from './pages/Profile'
 function App() {
   const {mode} = useContext(modeCotext)
   
@@ -22,6 +23,7 @@ function App() {
         <Route path='/product' element={<Product/>}/>
         <Route path='/favorite' element={<Favorite/>}/>
         <Route path='/mybids' element={<Mybids/>}/>
+        <Route path='/profile' element={<Profile/>}/>
       </Routes>
       <Footer/>
     </div>

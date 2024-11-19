@@ -3,14 +3,15 @@ import { faBars, faMoon, faSun, faUser, faX } from '@fortawesome/free-solid-svg-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useContext, useState } from 'react'
 import { modeCotext } from '../context/Contextshare'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 function Header() {
   const[navExpand,setNavExpand]=useState(false)
   const {mode,setMode} = useContext(modeCotext)
+  const navigate = useNavigate()
   return (
-    <div className='relativw'>
-      <div className='bg-neutral-50 dark:bg-neutral-800 dark:text-white w-full h-[80px] flex items-center fixed border-b-[1px] dark:border-b-neutral-500'>
+    <div className='relative'>
+      <div className='bg-neutral-50 dark:bg-neutral-800 dark:text-white w-full h-[80px] flex items-center fixed border-b-[1px] dark:border-b-neutral-500 z-[99]'>
         <Link to={'/'}><div className='md:ms-14 ms-5 text-2xl font-semibold text-primary'>ArtBids</div></Link>
          {/*  group-focus:w-full */}
         <div className='hidden md:flex justify-center font-medium w-full items-center'>
@@ -68,8 +69,8 @@ function Header() {
               <FontAwesomeIcon icon={faMoon} className='group-hover:rotate-[-30deg] transition-transform duration-300' />
             }
           </button>
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTSKbCFe_QYSVH-4FpaszXvakr2Eti9eAJpQ&s" alt="" className='w-[50px] h-[50px] rounded-[50%] hover:border-primary hover:border-2 cursor-pointer md:me-0 me-4' />
-          {/* <button className='hidden md:flex items-center bg-primary py-2 px-3 rounded font-medium hover:bg-phover'><FontAwesomeIcon icon={faUser} className='me-2'/>Login</button> */}
+          <img onClick={()=>{navigate('/profile')}} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTSKbCFe_QYSVH-4FpaszXvakr2Eti9eAJpQ&s" alt="" className='w-[50px] h-[50px] rounded-[50%] hover:border-primary hover:border-2 cursor-pointer md:me-0 me-4' />
+          {/* <button onClick={()=>{navigate('/login')}} className='hidden md:flex items-center bg-primary py-2 px-3 rounded font-medium hover:bg-phover'><FontAwesomeIcon icon={faUser} className='me-2'/>Login</button> */}
           {<button onClick={()=>setNavExpand(!navExpand)} className='text-2xl flex items-center md:hidden'>{navExpand?<FontAwesomeIcon icon={faX} className='ms-[3px]'/>:<FontAwesomeIcon icon={faBars}/>}</button>}
         </div>
       </div>
