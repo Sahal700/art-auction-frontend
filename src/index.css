@@ -7,3 +7,6 @@
   font-family: "Poppins", serif;
   @apply transition-colors duration-[50ms]
 }
+html{
+  scroll-behavior: smooth;
+}

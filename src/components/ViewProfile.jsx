@@ -1,14 +1,26 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaUser, FaUserTie } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
+import { updateProfileResponseContext } from '../context/Contextshare';
+import { serverUrl } from '../services/serverUrl';
 
 function ViewProfile({setEditProfile}) {
+  const [userDetails, setUserDetails] = useState({})
   const navigate = useNavigate()
+  const {updateProfileResponse} = useContext(updateProfileResponseContext)
+
+  // console.log(userDetails)
+
+  useEffect(()=>{
+    if (sessionStorage.getItem("existingUser")) {
+      setUserDetails(JSON.parse(sessionStorage.getItem("existingUser")))
+    }
+  },[updateProfileResponse])
   return ( 
     <div className="p-6 bg-gradient-to-r from-orange-50 dark:from-neutral-700 to-yellow-100 dark:to-neutral-700  dark:text-white shadow-lg  rounded-xl">
       <div className="flex justify-center mb-6">
         <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTSKbCFe_QYSVH-4FpaszXvakr2Eti9eAJpQ&s"
+          src={userDetails.profile?`${serverUrl}/upload/${userDetails.profile}`:"https://www.freeiconspng.com/thumbs/profile-icon-png/profile-icon-9.png"}
           alt="Profile"
           className="w-32 h-32 rounded-full shadow-md border-2 border-orange-200"
         />
@@ -17,23 +29,19 @@ function ViewProfile({setEditProfile}) {
       <div className="space-y-4">
         <div className="flex items-center">
           <FaUser className="text-orange-500 mr-2" />
-          <p><strong>Name:</strong> John Doe</p>
-        </div>
-        <div className="flex items-center">
-          <FaUserTie className="text-orange-500 mr-2" />
-          <p><strong>Role:</strong> Bidder</p>
+          <p><strong>Name:</strong> {userDetails?.username}</p>
         </div>
         <div className="flex items-center">
           <FaEnvelope className="text-orange-500 mr-2" />
-          <p><strong>Email:</strong> random@gmail.com</p>
+          <p><strong>Email:</strong> {userDetails?.email}</p>
         </div>
         <div className="flex items-center">
           <FaPhone className="text-orange-500 mr-2" />
-          <p><strong>Phone:</strong> 937483897</p>
+          <p><strong>Phone:</strong> {userDetails?.phone || "N/A"}</p>
         </div>
         <div className="flex items-center">
           <FaMapMarkerAlt className="text-orange-500 mr-2" />
-          <p><strong>Address:</strong> kakkand, Ernamkulam</p>
+          <p><strong>Address:</strong> {userDetails?.address || "N/A"}</p>
         </div>
       </div>
 
