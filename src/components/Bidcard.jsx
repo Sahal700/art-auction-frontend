@@ -49,7 +49,7 @@ function Bidcard({favourite,auction,setDeleteResponse}) {
         {favourite?<FaTrashAlt onClick={handleRemoveFavourite} className='ms-auto me-2 text-2xl'  />:<FaRegHeart onClick={handleAddFavourite} className='ms-auto me-2 text-primary text-2xl' />}
       </div>
       <div className='relative'>
-        <img onClick={()=>{navigate('/product')}} src={`${serverUrl}/upload/${auction?.image}`} alt="" className='w-full h-[200px] rounded' />
+        <img onClick={()=>{navigate(`/view-bid/${auction?._id}`)}} src={`${serverUrl}/upload/${auction?.image}`} alt="" className='w-full h-[200px] rounded' />
         <div className='absolute top-2 right-2 bg-orange-300 text-sm px-2 rounded-3xl'>bids {auction?.bids.length}</div>
       </div>
       <div className='px-2 pb-3'>

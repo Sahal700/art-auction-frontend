@@ -6,7 +6,7 @@ import { IoMdArrowRoundBack } from "react-icons/io";
 import { toast } from 'react-toastify';
 import Header from '../components/Header'
 
-function Product({bid}) {
+function Product({bid,admin}) {
   const [auction,setAuction] = useState({})
   const [bidAmount,setBidAmount] = useState('')
   const [isValid,setIsValid] = useState("valid")
@@ -75,6 +75,7 @@ function Product({bid}) {
       <Header/>
       <div className="pt-[100px] md:grid grid-cols-2 md:px-60 dark:bg-neutral-800 dark:text-white pb-5">
         {
+        admin?<Link className='col-span-2 mb-3 cursor-pointer flex items-center' to={"/admin-manage/auction"}><IoMdArrowRoundBack  className='text-xl'/>Auctions</Link>:
         bid?
         <Link className='col-span-2 mb-3 cursor-pointer flex items-center' to={"/auctions"}><IoMdArrowRoundBack  className='text-xl'/>Auctions</Link>:
         <Link className='col-span-2 mb-3 cursor-pointer flex items-center' to={"/myauction"}><IoMdArrowRoundBack  className='text-xl'/> My Auction</Link>

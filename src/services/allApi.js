@@ -80,3 +80,18 @@ export const getAllBidsApi = async (reqHeader)=>{
 export const updateProfileApi = async (reqBody,reqHeader)=>{
   return await commonApi('PUT',`${serverUrl}/update-profile`,reqBody,reqHeader)
 }
+
+// get all users api
+export const getAllUsersApi = async (reqHeader)=>{
+  return await commonApi('GET',`${serverUrl}/admin/get-all-users`,{},reqHeader)
+}
+
+// get all auction api
+export const getAllAdminAuctionApi = async (reqHeader)=>{
+  return await commonApi('GET',`${serverUrl}/admin/get-all-auction`,{},reqHeader)
+}
+
+// update status of auction
+export const updateAuctionStatus = async (id,status,reqHeader)=>{
+  return await commonApi('PUT',`${serverUrl}/auction/${id}/update-status?status=${status}`,{},reqHeader)
+}

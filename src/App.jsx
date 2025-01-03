@@ -15,6 +15,8 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import AdminHome from './pages/AdminHome'
 import PageNotFound from './pages/PageNotFound'
+import ViewUsers from './pages/ViewUsers'
+import ManageAuction from './pages/ManageAuction'
 function App() {
   const {mode} = useContext(modeCotext)
   
@@ -26,12 +28,16 @@ function App() {
         <Route path='/register' element={<Auth register={true}/>}/>
         <Route path='/view-bid/:id' element={<Product bid={true}/>}/>
         <Route path='/view-auction/:id' element={<Product/>}/>
+        <Route path='/view-auction/admin/:id' element={<Product admin={true}/>}/>
         <Route path='/favorite' element={<Favorite/>}/>
         <Route path='/mybids' element={<Mybids/>}/>
         <Route path='/auctions' element={<Auctions/>}/>
         <Route path='/profile' element={<Profile/>}/>
         <Route path='/myauction' element={<Myauction/>}/>
+        {/* admin paths */}
         <Route path='/admin-home' element={<AdminHome/>}/>
+        <Route path='/admin-view/users' element={<ViewUsers/>}/>
+        <Route path='/admin-manage/auction' element={<ManageAuction/>}/>
         <Route path='*' element ={<PageNotFound/>}/>
       </Routes>
       <ToastContainer theme='colored' position='top-center' autoClose={2000}/>

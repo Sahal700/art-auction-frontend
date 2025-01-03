@@ -96,6 +96,12 @@ function Myauction() {
                   {item?.status == 'pending' &&
                     <span className='px-2 rounded text-white bg-yellow-500 font-medium dark:text-black'>pending</span>
                   }
+                  {item?.status == 'completed' &&
+                    <span className='px-2 rounded text-white bg-yellow-500 font-medium dark:text-black'>completed</span>
+                  }
+                  {item?.status == 'rejected' &&
+                    <span className='px-2 rounded text-white bg-yellow-500 font-medium dark:text-black'>rejected</span>
+                  }
                 </td>
                 <td className='px-3 md:pe-10 py-1'><div className='flex justify-between md:space-x-0 space-x-3 text-xl'><Link to={`/view-auction/${item?._id}`}><FaEye className='text-blue-500'/></Link><EditAuction auction={item} userAuction={userAuction}/><FaTrashAlt onClick={()=>{handleDelete(item?._id)}} className='text-red-500'/></div></td>
               </tr>
