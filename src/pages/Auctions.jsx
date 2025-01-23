@@ -7,17 +7,11 @@ function Auctions() {
   const [allAuction,setAllAuction]=useState([])
 
   const getAllAuction = async() =>{
-    if(sessionStorage.getItem("token")){
-      const token = sessionStorage.getItem("token")
-      const reqHeader = {
-        "Content-Type" : "application/json",
-        "Authorization" : `Bearer ${token}`
-      }
-      const result = await getAllAuctionApi(reqHeader)
+    
+      const result = await getAllAuctionApi()
       if (result.status==200) {
         setAllAuction(result.data)
       }
-    }
   }
 
   useEffect(()=>{
@@ -32,7 +26,7 @@ function Auctions() {
           <button className="absolute inset-y-0 end-0 flex items-center pe-3">
           <IoSearch className='text-xl'/>
           </button>
-          <input type="search" id="default-search" className="block w-full p-4 ps-3 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search "/>
+          <input type="text" id="default-search" className="block w-full p-4 ps-3 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search "/>
           </div>
         </div>
         <div className='md:grid grid-cols-[repeat(1,1fr_1fr_1fr_1fr)] gap-x-10 gap-y-5 md:px-20 px-5 dark:bg-neutral-800  dark:text-white'>

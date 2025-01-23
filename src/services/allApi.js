@@ -37,8 +37,8 @@ export const viewAuctionApi = async (id,reqHeader)=>{
 }
 
 // get-all-auction
-export const getAllAuctionApi = async (reqHeader)=>{
-  return await commonApi('GET',`${serverUrl}/get-all-auction`,{},reqHeader)
+export const getAllAuctionApi = async ()=>{
+  return await commonApi('GET',`${serverUrl}/get-all-auction`)
 }
 
 // get user details

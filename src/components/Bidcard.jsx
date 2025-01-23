@@ -1,14 +1,16 @@
 import { FaRegHeart } from "react-icons/fa";
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { FaTrashAlt } from "react-icons/fa";
 import { serverUrl } from "../services/serverUrl";
 import { addFavouriteApi, removeFavouriteApi } from "../services/allApi";
+import { loginResponseContext } from "../context/Contextshare";
 
 function Bidcard({favourite,auction,setDeleteResponse}) {
   const [token,setToken] = useState("")
+  const {loginResponse} = useContext(loginResponseContext)
   const navigate = useNavigate()
-
+  
   const handleAddFavourite = async()=>{
     if (token) {
       const reqHeader = {
@@ -66,7 +68,7 @@ function Bidcard({favourite,auction,setDeleteResponse}) {
             <p className='text-xs text-gray-800 dark:text-gray-300'>Current bid</p> 
             <p className="text-orange-500 font-medium">$ {auction?.currentBid}</p> 
           </div>
-          <button onClick={()=>navigate(`/view-bid/${auction?._id}`)} className='bg-primary px-2 py-1 rounded hover:bg-phover'>Place Bid</button>
+          <button onClick={()=>{loginResponse?navigate(`/view-bid/${auction?._id}`):navigate(`/login`)}} className='bg-primary px-2 py-1 rounded hover:bg-phover'>Place Bid</button>
         </div>
       </div>
     </div>
