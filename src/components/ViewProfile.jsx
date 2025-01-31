@@ -3,8 +3,9 @@ import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaUser, FaUserTie } from 'react-ic
 import { useNavigate } from 'react-router-dom';
 import { updateProfileResponseContext } from '../context/Contextshare';
 import { serverUrl } from '../services/serverUrl';
+import { IoWallet } from 'react-icons/io5';
 
-function ViewProfile({setEditProfile}) {
+function ViewProfile({setEditProfile,setwallet}) {
   const [userDetails, setUserDetails] = useState({})
   const navigate = useNavigate()
   const {updateProfileResponse} = useContext(updateProfileResponseContext)
@@ -43,10 +44,14 @@ function ViewProfile({setEditProfile}) {
           <FaMapMarkerAlt className="text-orange-500 mr-2" />
           <p><strong>Address:</strong> {userDetails?.address || "N/A"}</p>
         </div>
+        <div onClick={()=>{setwallet(true);setEditProfile(false);}} className="flex items-center p-5 dark:bg-neutral-600 bg-gradient-to-r from-orange-100 to-yellow-200 hover:from-[#fde2bf] hover: hover:to-[#fded72] rounded-md dark:hover:bg-[rgb(96,96,96)] shadow transition-colors">
+          <IoWallet className='text-orange-500 mr-2'/><span className='text-lg'>wallet</span>
+          <span className='text-green-500 ms-auto text-lg font-medium'>₹100</span>
+        </div>
       </div>
 
       <div className="mt-6 flex justify-around">
-        <button onClick={()=>{setEditProfile(true)}} className="px-6 py-2 bg-orange-500 text-white rounded-full hover:bg-orange-600 transition">
+        <button onClick={()=>{setEditProfile(true);setwallet(false);}} className="px-6 py-2 bg-orange-500 text-white rounded-full hover:bg-orange-600 transition">
           Edit Profile
         </button>
         <button onClick={()=>{navigate('/login')}} className="px-6 py-2 bg-red-500 text-white rounded-full hover:bg-red-600 transition">

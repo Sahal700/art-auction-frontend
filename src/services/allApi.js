@@ -95,3 +95,8 @@ export const getAllAdminAuctionApi = async (reqHeader)=>{
 export const updateAuctionStatus = async (id,status,reqHeader)=>{
   return await commonApi('PUT',`${serverUrl}/auction/${id}/update-status?status=${status}`,{},reqHeader)
 }
+
+// create order for payment
+export const createOrderApi = async (reqBody,reqHeader)=>{
+  return await commonApi('POST',`${serverUrl}/create-order`,reqBody,reqHeader)
+}
